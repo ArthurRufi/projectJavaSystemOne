@@ -1,17 +1,28 @@
 package service;
 
 public class NameVerify {
-    public String name;
-    private String[] blockedName;
+    private String name;
+    private String[] blockedNames;
 
-    public NameVerify(String name, String[] blockedName) {
+    public NameVerify(String name, String[] blockedNames) {
         this.name = name;
-        this.blockedName = blockedName;
+        this.blockedNames = blockedNames;
     }
 
     public boolean nameIsBlocked(){
-        for (String blocked : blockedName){
+        for (String blocked : blockedNames){
             if (name.equalsIgnoreCase(blocked)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean numberVerify(){
+        // se tem numero estiver presente deve retonar um true
+        for (int i = 0; i < name.length(); i++){
+            char c = name.charAt(i);
+            if (Character.isDigit(c)){
                 return true;
             }
         }
@@ -26,11 +37,11 @@ public class NameVerify {
         this.name = name;
     }
 
-    public String[] getBlockedName() {
-        return blockedName;
+    public String[] getBlockedNames() {
+        return blockedNames;
     }
 
-    public void setBlockedName(String[] blockedName) {
-        this.blockedName = blockedName;
+    public void setBlockedNames(String[] blockedNames) {
+        this.blockedNames = blockedNames;
     }
 }
